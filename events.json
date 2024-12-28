@@ -4,27 +4,31 @@
         "time": "8:15 AM",   
         "location": "SOSS/CIS SR B1-1",	
         "recurring": true,
-        "day": ["Monday"] 
+        "day": ["Monday"],
+        "reminder_sent": false
     },
     {
         "name": "IS113 Web Application Development I",
         "time": "3.30 PM",   
         "location": "SOE/SCIS2 SR 3-6",	
         "recurring": true,
-        "day": ["Wednesday"]
+        "day": ["Wednesday"],
+        "reminder_sent": false
     },
     {
         "name": "IS112 Data Management",
         "time": "7.00 PM",   
         "location": "SCIS1 SR 2-2",	
         "recurring": true,
-        "day": ["Wednesday"]
+        "day": ["Wednesday"],
+        "reminder_sent": false
     },
     {
         "name": "IS115 Algorithms & Programming",
         "time": "8.15 AM",   
         "location": "SCIS1 SR 2-3",	
         "recurring": true,
-        "day": ["Friday"]
+        "day": ["Friday"],
+        "reminder_sent": false
     }
 ]
