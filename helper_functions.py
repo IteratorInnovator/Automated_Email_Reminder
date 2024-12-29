@@ -46,7 +46,7 @@ def send_email(event,sender_email,recipient_emails,app_password,email_contents):
         
         
         
-# For recurring events, retrieve day of tomorrow and date
+# For recurring events, retrieve day of tomorrow and time
 # Process event and craft email body
 # Return email content for plain text and html
 def email_alerts_recurring(event,day_of_tomorrow,current_time):
@@ -90,5 +90,46 @@ Automated Reminder System
             """
             return (email_content,email_content_in_html)
     return ()
+
+# For recurring events, retrieve date of tomorrow and time
+# Process event and craft email body
+# Return email content for plain text and html
 def email_alerts_non_recurring(event,date_of_tomorrow,current_time):
-    pass
+    # Convert event date to datetime.date object for comparison
+    event_date = datetime.strptime(event["date"],"%Y-%m-%d").date()
+    if date_of_tomorrow == event_date:
+        event_time = datetime.strptime(event["time"],"%I:%M %p").date()
+        if current_time < event_time:
+            event_name = event["name"]
+            location = event["location"]
+            time = event["time"]
+            email_content = f"""
+Hi Harry,
+    
+This is a reminder that you have the following activity tomorrow:
+    
+Activity: {event_name}
+Location: {location}
+Time: {time}
+
+Best regards,
+Automated Reminder System
+            """
+            email_content_in_html = f"""
+    <html>
+        <body>
+            <h1 style="color: #0056b3;"><b>REMINDER</b></h1>
+            <p>Hi Harry,</p>
+            <p>This is a reminder that you have the following activity <b>tomorrow</b>:</p>
+            <p>
+                <b>Activty:</b> {event_name}<br>
+                <b>Location:</b> {location}<br>
+                <b>Time:</b> {time}<br><br>
+            </p>
+            <p>Please ensure you are prepared for the lesson.</p>
+            <p>Best regards,<br>Automated Reminder System</p>
+        </body>
+    </html>
+            """
+            return (email_content,email_content_in_html)
+    return ()

@@ -30,5 +30,13 @@
         "recurring": true,
         "day": ["Friday"],
         "reminder_sent": false
+    },
+    {
+        "name": "Flight to Thailand",
+        "date": "2025-01-08",
+        "time": "9.20 AM",   
+        "location": "Changi Airport Terminal 1",	
+        "recurring": false,
+        "reminder_sent": false
     }
 ]
