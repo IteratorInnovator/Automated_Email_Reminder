@@ -8,6 +8,10 @@ from email.message import EmailMessage
 def load_events(JSON_FILE):
     with open(JSON_FILE,'r') as f:
         return json.load(f)
+    
+def update_events(JSON_FILE,events):
+    with open(JSON_FILE,'w') as f:
+        json.dump(events,f,indent=4)
 
 # Get tomorrow's date in YYYY-MM-DD format
 def get_tomorrow_date():
@@ -26,7 +30,7 @@ def get_time():
     
 def send_email(event,sender_email,recipient_emails,app_password,email_contents):
     msg = EmailMessage()
-    msg["Subject"] = f"REMINDER - {event["name"]}"
+    msg["Subject"] = f"REMINDER - {event['name']}"
     msg["From"] = sender_email
     msg["To"] = ','.join(recipient_emails)
     msg.set_content(email_contents[0])
@@ -54,7 +58,7 @@ def email_alerts_recurring(event,day_of_tomorrow,current_time):
     if day_of_tomorrow in event["day"]:
         event_time = datetime.strptime(event["time"],"%I:%M %p").time()
         # Check if current time in within 24 hr mark
-        if event_time < current_time:
+        if current_time >= event_time:
             event_name = event["name"]
             location = event["location"]
             time = event["time"]
@@ -98,8 +102,8 @@ def email_alerts_non_recurring(event,date_of_tomorrow,current_time):
     # Convert event date to datetime.date object for comparison
     event_date = datetime.strptime(event["date"],"%Y-%m-%d").date()
     if date_of_tomorrow == event_date:
-        event_time = datetime.strptime(event["time"],"%I:%M %p").date()
-        if current_time < event_time:
+        event_time = datetime.strptime(event["time"],"%I:%M %p").time()
+        if current_time >= event_time:
             event_name = event["name"]
             location = event["location"]
             time = event["time"]
