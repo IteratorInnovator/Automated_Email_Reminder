@@ -10,7 +10,13 @@ def main():
     app_password = os.getenv("APP_PASSWORD")
     recipient_email = os.getenv("RECIPIENT_EMAIL")
     events = email_alerts.load_events(JSON_FILE)
-    print(events)
+    for event in events:
+        if event["reminder_sent"] == False:
+            if event["recurring"] == True:
+                email_alerts.email_alerts_recurring(event)
+            elif event["recurring"] == False:
+                email_alerts.email_alerts_non_recurring(event)
+            
     
 if __name__ == "__main__":
     main()
