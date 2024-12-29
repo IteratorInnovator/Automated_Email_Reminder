@@ -22,34 +22,13 @@ def get_tomorrow_date():
 def get_tomorrow_day():
     # Get tomorrows date by adding timedelta(days=1) to today
     day_tmr = datetime.today() + timedelta(days=1)
-    return day_tmr.strftime('%a')
+    return day_tmr.strftime('%A')
 
 # Get current time in HH:MM:SS 
 def get_time():
     return datetime.today().time()
-    
-def send_email(event,sender_email,recipient_emails,app_password,email_contents):
-    msg = EmailMessage()
-    msg["Subject"] = f"REMINDER - {event['name']}"
-    msg["From"] = sender_email
-    msg["To"] = ','.join(recipient_emails)
-    msg.set_content(email_contents[0])
-    msg.add_alternative(email_contents[1],subtype="html")
-    
-    context = ssl.create_default_context()
-    # SSL connections: port 465
-    # If using starttls(), use port 587
-    # Close using server.close() if no 'with' statement used
-    try:
-        with smtplib.SMTP_SSL("smtp.gmail.com",465,context=context) as server:
-            server.login(sender_email,app_password)
-            server.sendmail(sender_email,recipient_emails,msg.as_string())
-            # Convert EmailMessage object into a properly formatted string that follows the MIME standard
-    except Exception as e:
-        print(f"Error: {e}")
         
-        
-        
+      
 # For recurring events, retrieve day of tomorrow and time
 # Process event and craft email body
 # Return email content for plain text and html
@@ -126,14 +105,34 @@ Automated Reminder System
             <p>Hi Harry,</p>
             <p>This is a reminder that you have the following activity <b>tomorrow</b>:</p>
             <p>
-                <b>Activty:</b> {event_name}<br>
+                <b>Activity:</b> {event_name}<br>
                 <b>Location:</b> {location}<br>
                 <b>Time:</b> {time}<br><br>
             </p>
-            <p>Please ensure you are prepared for the lesson.</p>
             <p>Best regards,<br>Automated Reminder System</p>
         </body>
     </html>
             """
             return (email_content,email_content_in_html)
     return ()
+
+
+def send_email(event,sender_email,recipient_emails,app_password,email_contents):
+    msg = EmailMessage()
+    msg["Subject"] = f"REMINDER - {event['name']}"
+    msg["From"] = sender_email
+    msg["To"] = ','.join(recipient_emails)
+    msg.set_content(email_contents[0])
+    msg.add_alternative(email_contents[1],subtype="html")
+    
+    context = ssl.create_default_context()
+    # SSL connections: port 465
+    # If using starttls(), use port 587
+    # Close using server.close() if no 'with' statement used
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com",465,context=context) as server:
+            server.login(sender_email,app_password)
+            server.sendmail(sender_email,recipient_emails,msg.as_string())
+            # Convert EmailMessage object into a properly formatted string that follows the MIME standard
+    except Exception as e:
+        print(f"Error: {e}")

@@ -27,11 +27,13 @@ def main():
                 event["reminder_sent"] = True
         elif event["reminder_sent"] == True:
             if event["recurring"] == True:
-                current_day = datetime.today().strftime('%a')
-                if current_day == event["day"]:
+            # Check if current day matches recurring event days
+            # Reset reminder_sent back to false if event has occured by comparing current time and event time
+                current_day = datetime.today().strftime('%A')
+                if current_day in event["day"]:
                     event_time = datetime.strptime(event["time"],"%I:%M %p").time()
-                    if event_time > current_time:
-                        event["reminder_sent"] == False
+                    if current_time > event_time:
+                        event["reminder_sent"] = False
             elif event["recurring"] == False:
                 event_date = datetime.strptime(event["date"],"%Y-%m-%d").date()
                 current_date = datetime.today().date()
