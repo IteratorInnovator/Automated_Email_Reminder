@@ -4,7 +4,7 @@ import custom_error_class as er
 import helper_functions as HF
 import re
 import os
-from dotenv import load_dotenv 
+# from dotenv import load_dotenv 
 
 
 def get_event_name():
@@ -91,7 +91,7 @@ def sort_event_by_keys(event):
     return sorted_event
 
 def main():
-    load_dotenv()
+    # load_dotenv() if credentials are stored as environment variables in an .env file
     JSON_FILE = os.getenv("EVENT_FILE","./sample_events.json")
     event = {}
     event["name"] = get_event_name()
