@@ -31,7 +31,7 @@ def get_event_date():
     while True:
         try:
             event_date = input("Enter event date in YYYY-MM-DD format (e.g 2025-01-20): ")
-            if re.match(date_pattern,event_date) == False:
+            if re.match(date_pattern,event_date) == None:
                 raise ValueError("Invalid date entered!")
             event_date_as_datetime = datetime.strptime(event_date,"%Y-%m-%d").date()
             current_date = datetime.today().date()
@@ -65,14 +65,18 @@ def get_event_time(event):
     while True:
         try:
             event_time = input("Enter time of event in HH:MM AM/PM format (e.g 02:30 PM): ")
+            # Retrieve event_time as a datetime.time object
             event_time_as_datetime = datetime.strptime(event_time,"%I:%M %p").time()
             if event["recurring"] == False:
                 today_datetime = datetime.today()
+                # Retrieve event_date as datetime.date object
                 event_date_as_datetime = datetime.strptime(event["date"],"%Y-%m-%d").date()
+                # Combine event_date and event_time to get event as datetime object
                 event_datetime = datetime.combine(event_date_as_datetime,event_time_as_datetime)
                 if event_datetime < today_datetime:
                     raise er.InvalidTimeInputError("Event cannot be in the past!")
-            return event_time
+            # Reformat event_time into standardized format 
+            return datetime.strftime(datetime.strptime(event_time,"%I:%M %p"),"%I:%M %p")
         except er.InvalidTimeInputError as e:
             print(f"Error: {e} Please try again.")
         except Exception as e:
