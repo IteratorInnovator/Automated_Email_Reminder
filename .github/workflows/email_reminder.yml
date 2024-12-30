@@ -1,0 +1,27 @@
+name: Automated Email Reminder
+
+on:
+  # Schedule the workflow to run every hour
+  schedule:
+    - cron: "0 * * * *"  # Every hour at the start of the hour
+
+jobs:
+  run-email-reminder:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3  # Fetch your repository's code
+
+    - name: Set up Python
+      uses: actions/setup-python@v4  # Set up Python environment
+      with:
+        python-version: 3.x  # Specify Python version
+
+    - name: Run the script
+      env:  # Pass secrets as environment variables
+        SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+        APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+        RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        EVENT_FILE: ${{ secrets.EVENT_FILE }}
+      run: python main.py  # Execute your Python script
