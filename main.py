@@ -2,14 +2,14 @@ from datetime import datetime
 import os
 import json
 import helper_functions as HF
-from dotenv import load_dotenv
+# from dotenv import load_dotenv (to load env variables)
 
 def main():
-    load_dotenv()
-    sender_email = os.environ("SENDER_EMAIL")
-    app_password = os.environ("APP_PASSWORD")
-    recipient_emails = os.environ("RECIPIENT_EMAIL").split(',')
-    JSON_FILE = os.environ("EVENT_FILE","./sample_events.json")
+    # load_dotenv() if credentials are stored as environment variables in an .env file
+    sender_email = os.environ["SENDER_EMAIL"]
+    app_password = os.environ["APP_PASSWORD"]
+    recipient_emails = os.environ["RECIPIENT_EMAIL"].split(',')
+    JSON_FILE = os.getenv("EVENT_FILE","./sample_events.json")
     events = HF.load_events(JSON_FILE)
     day_of_tomorrow = HF.get_tomorrow_day()
     date_of_tomorrow = HF.get_tomorrow_date()
