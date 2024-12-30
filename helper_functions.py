@@ -13,10 +13,6 @@ def update_events(JSON_FILE,events):
     with open(JSON_FILE,'w') as f:
         json.dump(events,f,indent=4)
 
-# Get today's date 
-def get_today_datetime():
-    return datetime.today()
-
 # Get tomorrow's date in YYYY-MM-DD format
 def get_tomorrow_date():
     tomorrow_date = datetime.today() + timedelta(days=1)

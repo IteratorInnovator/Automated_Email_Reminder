@@ -46,5 +46,24 @@
         "location": "Changi Airport Terminal 1",
         "recurring": false,
         "reminder_sent": false
+    },
+    {
+        "name": "test",
+        "location": "test",
+        "recurring": true,
+        "day": [
+            "Monday",
+            "Sunday"
+        ],
+        "time": "2:30 Pm",
+        "reminder_sent": false
+    },
+    {
+        "name": "test",
+        "location": "test",
+        "recurring": false,
+        "date": "2025-01-01",
+        "time": "2:30 AM",
+        "reminder_sent": false
     }
 ]

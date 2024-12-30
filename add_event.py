@@ -31,31 +31,46 @@ def get_event_date():
         try:
             event_date = input("Enter event date in YYYY-MM-DD format (e.g 2025-01-20): ")
             if re.match(date_pattern,event_date) == False:
-                raise ValueError
-            event_datetime_obj = datetime.strptime(event_date,"%Y-%m-%d").date()
+                raise ValueError("Invalid date entered!")
+            event_date_as_datetime = datetime.strptime(event_date,"%Y-%m-%d").date()
             current_date = datetime.today().date()
-            if event_date < current_date:
+            if event_date_as_datetime < current_date:
                 raise er.InvalidTimeInputError("Date entered cannot be in the past!")
             return event_date
         except er.InvalidTimeInputError as e:
             print(f"Error: {e} Please try again.")
-        except:
-            print("Error: Invalid input! Please try again.")
+        except Exception as e:
+            print(f"Error: {e} Please try again.")
 
 def get_event_days():
-    pass
+    event_days = set()
+    valid_days = {"monday","tuesday","wednesday","thursday","friday","saturday","sunday"}
+    while True:
+        try:
+            day = input("Enter the events days one per line (e.g monday, tuesday) . Type 'done' when finished. ").lower()
+            if day == 'done':
+                break
+            if day in valid_days:
+                event_days.add(day)
+            else:
+                raise ValueError("Invalid day entered!")
+        except Exception as e:
+            print(f"Error: {e} Please try again.")
+    event_days = list(event_days)
+    event_days = [day.capitalize() for day in event_days]
+    return event_days 
 
 def get_event_time(event):
     while True:
         try:
             event_time = input("Enter time of event in HH:MM AM/PM format (e.g 02:30 PM): ")
-            event_time_as_datetime = datetime.strptime(event_time,"%I:%m %P").time()
+            event_time_as_datetime = datetime.strptime(event_time,"%I:%M %p").time()
             if event["recurring"] == False:
                 today_datetime = datetime.today()
                 event_date_as_datetime = datetime.strptime(event["date"],"%Y-%m-%d").date()
                 event_datetime = datetime.combine(event_date_as_datetime,event_time_as_datetime)
-            if event_datetime < today_datetime:
-                raise er.InvalidTimeInputError("Event cannot be in the past!")
+                if event_datetime < today_datetime:
+                    raise er.InvalidTimeInputError("Event cannot be in the past!")
             return event_time
         except er.InvalidTimeInputError as e:
             print(f"Error: {e} Please try again.")
@@ -73,11 +88,13 @@ def main():
     else:
         event["date"] = get_event_date()
     event["time"] = get_event_time(event)
+    event["reminder_sent"] = False
     with open(JSON_FILE,'r') as f:
         events = json.load(f)
     events.append(event)
     with open(JSON_FILE,'w') as f:
         json.dump(events,f,indent=4)
+    print("Event has been succesfully added.")
         
 if __name__ == "__main__":
     main()
