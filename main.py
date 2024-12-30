@@ -38,11 +38,11 @@ def main():
                 event_date = datetime.strptime(event["date"],"%Y-%m-%d").date()
                 current_date = datetime.today().date()
                 # Check if event has already passed
-                if event_date > current_date:
+                if current_date > event_date:
                     continue # Skip appending to updated_events since event has already occured
-                elif event_date == current_date:
+                elif current_date == event_date:
                     event_time = datetime.strptime(event["time"],"%I:%M %p").time()
-                    if event_time > current_time:
+                    if current_time > event_time:
                         continue
         updated_events.append(event)
     HF.update_events(JSON_FILE,updated_events)
