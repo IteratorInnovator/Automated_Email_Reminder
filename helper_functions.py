@@ -45,12 +45,15 @@ def email_alerts_recurring(event,day_of_tomorrow,current_time):
 Hi Harry,
     
 This is a reminder that you have the following class tomorrow:
+ 
     
 Class: {event_name}
 Location: {location}
 Time: {time}
 
+
 Please ensure you are prepared for the lesson.
+
 
 Best regards,
 Automated Reminder System
@@ -60,13 +63,13 @@ Automated Reminder System
         <body>
             <h1 style="color: #0056b3;"><b>REMINDER</b></h1>
             <p>Hi Harry,</p>
-            <p>This is a reminder that you have the following class <b>tomorrow</b>:</p>
+            <p>This is a reminder that you have the following class <b>tomorrow</b>:<br></p>
             <p>
                 <b>Class:</b> {event_name}<br>
                 <b>Location:</b> {location}<br>
                 <b>Time:</b> {time}<br><br>
             </p>
-            <p>Please ensure you are prepared for the lesson.</p>
+            <p>Please ensure you are prepared for the lesson.<br></p>
             <p>Best regards,<br>Automated Reminder System</p>
         </body>
     </html>
@@ -90,10 +93,12 @@ def email_alerts_non_recurring(event,date_of_tomorrow,current_time):
 Hi Harry,
     
 This is a reminder that you have the following activity tomorrow:
+  
     
 Activity: {event_name}
 Location: {location}
 Time: {time}
+
 
 Best regards,
 Automated Reminder System
@@ -103,7 +108,7 @@ Automated Reminder System
         <body>
             <h1 style="color: #0056b3;"><b>REMINDER</b></h1>
             <p>Hi Harry,</p>
-            <p>This is a reminder that you have the following activity <b>tomorrow</b>:</p>
+            <p>This is a reminder that you have the following activity <b>tomorrow</b>:<br></p>
             <p>
                 <b>Activity:</b> {event_name}<br>
                 <b>Location:</b> {location}<br>
