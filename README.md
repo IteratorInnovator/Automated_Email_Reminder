@@ -9,18 +9,31 @@ This project is an **Automated Email Reminder System** designed to send timely r
 - **Custom Email Content**: Reminders are crafted based on event details such as name, location, and time.
 - **Dynamic Event Updates**: The system updates the event's status after sending reminders.
 
-## Expected Outputs
+## Sample Email Reminders
 ### Class Reminder
 ```text
-Hi Harry,
+Hi John,
 
 This is a reminder that you have the following class tomorrow:
 
-Class: COR3001 Big Questions
-Location: SOSS/CIS SR B1-1
-Time: 8:15 AM
+Class: Math
+Location: Classroom 3-6
+Time: 09:30 AM
 
 Please ensure you are prepared for the lesson.
+
+Best regards,
+Automated Reminder System
+```
+### General Activity Reminder
+```text
+Hi John,
+
+This is a reminder that you have the following activity tomorrow:
+
+Class: Flight to Japan
+Location: Changi Airport Terminal 4
+Time: 12:45 PM
 
 Best regards,
 Automated Reminder System
