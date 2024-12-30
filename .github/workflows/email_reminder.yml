@@ -18,10 +18,15 @@ jobs:
       with:
         python-version: 3.x  # Specify Python version
 
+    - name: Create events.json
+      env:
+        EVENTS_JSON: ${{ secrets.EVENTS_JSON }}
+      run: echo $EVENTS_JSON > events.json
+      
     - name: Run the script
       env:  # Pass secrets as environment variables
         SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
         APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
         RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
-        EVENT_FILE: ${{ secrets.EVENT_FILE }}
+        EVENT_FILE: ./events.json
       run: python main.py  # Execute your Python script
