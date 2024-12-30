@@ -1,7 +1,7 @@
 [
     {
         "name": "COR3001 Big Questions",
-        "time": "8:15 AM",
+        "time": "08:15 AM",
         "location": "SOSS/CIS SR B1-1",
         "recurring": true,
         "day": [
@@ -11,7 +11,7 @@
     },
     {
         "name": "IS113 Web Application Development I",
-        "time": "3:30 PM",
+        "time": "03:30 PM",
         "location": "SOE/SCIS2 SR 3-6",
         "recurring": true,
         "day": [
@@ -21,7 +21,7 @@
     },
     {
         "name": "IS112 Data Management",
-        "time": "7:00 PM",
+        "time": "07:00 PM",
         "location": "SCIS1 SR 2-2",
         "recurring": true,
         "day": [
@@ -31,7 +31,7 @@
     },
     {
         "name": "IS115 Algorithms & Programming",
-        "time": "8:15 AM",
+        "time": "08:15 AM",
         "location": "SCIS1 SR 2-3",
         "recurring": true,
         "day": [
@@ -42,7 +42,7 @@
     {
         "name": "Flight to Thailand",
         "date": "2025-01-08",
-        "time": "9:20 AM",
+        "time": "09:20 AM",
         "location": "Changi Airport Terminal 1",
         "recurring": false,
         "reminder_sent": false
