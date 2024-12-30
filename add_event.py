@@ -3,8 +3,9 @@ from datetime import datetime
 import custom_error_class as er
 import helper_functions as HF
 import re
+import os
+from dotenv import load_dotenv 
 
-JSON_FILE = "./events.json"
 
 def get_event_name():
     return input("Enter event name: ")
@@ -76,9 +77,18 @@ def get_event_time(event):
             print(f"Error: {e} Please try again.")
         except Exception as e:
             print("Error: Invalid Input! Please try again.")
-    
+
+def sort_event_by_keys(event):
+    if event["recurring"] == True:
+        custom_order = ["name","time","location","recurring","day","reminder_sent"]
+    else:
+        custom_order = ["name","date","time","location","recurring","reminder_sent"]
+    sorted_event = {k:event[k] for k in custom_order}
+    return sorted_event
 
 def main():
+    load_dotenv()
+    JSON_FILE = os.getenv("EVENT_FILE","./sample_events.json")
     event = {}
     event["name"] = get_event_name()
     event["location"] = get_event_location()
@@ -89,6 +99,7 @@ def main():
         event["date"] = get_event_date()
     event["time"] = get_event_time(event)
     event["reminder_sent"] = False
+    event = sort_event_by_keys(event)
     with open(JSON_FILE,'r') as f:
         events = json.load(f)
     events.append(event)

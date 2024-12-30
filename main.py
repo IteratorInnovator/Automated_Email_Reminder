@@ -4,12 +4,12 @@ import json
 import helper_functions as HF
 from dotenv import load_dotenv
 
-JSON_FILE = "./events.json"
 def main():
     load_dotenv()
     sender_email = os.getenv("SENDER_EMAIL")
     app_password = os.getenv("APP_PASSWORD")
     recipient_emails = os.getenv("RECIPIENT_EMAIL").split(',')
+    JSON_FILE = os.getenv("EVENT_FILE","./sample_events.json")
     events = HF.load_events(JSON_FILE)
     day_of_tomorrow = HF.get_tomorrow_day()
     date_of_tomorrow = HF.get_tomorrow_date()
