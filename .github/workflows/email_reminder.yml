@@ -41,3 +41,4 @@ jobs:
         git diff --cached --quiet || git commit -m "Update reminder_sent in events.json"
         git push origin main
     
+# Note: Enable read write permission under Settings > Actions > General > Workflow Permissions
