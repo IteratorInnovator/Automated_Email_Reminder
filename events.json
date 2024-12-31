@@ -27,7 +27,7 @@
         "day": [
             "Wednesday"
         ],
-        "reminder_sent": false
+        "reminder_sent": true
     },
     {
         "name": "IS115 Algorithms & Programming",
