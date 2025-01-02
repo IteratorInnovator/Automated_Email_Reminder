@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-email-reminder:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    runs-on: ubuntu-22.04  # Use the Ubuntu-22.04 
 
     steps:
     - name: Check out repository
@@ -37,8 +37,8 @@ jobs:
         git config --global user.name "github-actions"
         git config --global user.email "actions@github.com"
         git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
-        git add events.json
-        git diff --cached --quiet || git commit -m "Update reminder_sent in events.json"
+        git add events.json status.log
+        git diff --cached --quiet || git commit -m "Update events.json and status.log"
         git push origin main
     
 # Note: Enable read write permission under Settings > Actions > General > Workflow Permissions
