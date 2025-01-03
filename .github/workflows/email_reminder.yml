@@ -3,13 +3,13 @@ name: Automated Email Reminder
 on:
   # Schedule the workflow to run every hour
   schedule:
-    - cron: "0 */1 * * *"  # Every hour at the start of the hour
-
+    - cron: "0 16-23 * * *"  # 16:00 - 23:00 UTC maps to 0:00 - 7:00 SGT
+    - cron: "0 0-15 * * *"  # 0:00 - 15:00 UTC maps to 8:00 - 23:00 SGT
 jobs:
   run-email-reminder:
     runs-on: ubuntu-22.04  # Use the Ubuntu-22.04 
     env:
-      TZ: "Asia/Singapore" # Set timezone to Singapore 
+      TZ: "Asia/Singapore" # Set timezone to Singapore (Linux)
     steps:
     - name: Check out repository
       uses: actions/checkout@v3  # Fetch your repository's code
