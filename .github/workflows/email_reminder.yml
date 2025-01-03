@@ -8,7 +8,8 @@ on:
 jobs:
   run-email-reminder:
     runs-on: ubuntu-22.04  # Use the Ubuntu-22.04 
-
+    env:
+      TZ: "Asia/Singapore" # Set timezone to Singapore 
     steps:
     - name: Check out repository
       uses: actions/checkout@v3  # Fetch your repository's code
@@ -27,8 +28,6 @@ jobs:
       run: python main.py  # Execute your Python script
 
     - name: Commit changes to events.json # Commit back the changes made to events.json
-      env: 
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
     # Compare changes in the staging area to the last commit (--cached) without outputting any code, 
     # returning only an exit code (--quiet)
     # If no changes made to events.json, no commits will occur
