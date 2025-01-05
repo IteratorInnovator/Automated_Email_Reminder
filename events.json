@@ -7,7 +7,7 @@
         "day": [
             "Monday"
         ],
-        "reminder_sent": false
+        "reminder_sent": true
     },
     {
         "name": "IS113 Web Application Development I",
