@@ -45,6 +45,6 @@
         "time": "09:20 AM",
         "location": "Changi Airport Terminal 1",
         "recurring": false,
-        "reminder_sent": false
+        "reminder_sent": true
     }
 ]
