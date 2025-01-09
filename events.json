@@ -37,6 +37,6 @@
         "day": [
             "Friday"
         ],
-        "reminder_sent": false
+        "reminder_sent": true
     }
 ]
