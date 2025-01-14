@@ -5,7 +5,11 @@
         "location": "Singapore",
         "recurring": true,
         "day": [
-            "Monday","Tuesday","Wednesday","Thursday","Friday"
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
         ],
         "reminder_sent": false
     },

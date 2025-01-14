@@ -38,5 +38,15 @@
             "Friday"
         ],
         "reminder_sent": false
+    },
+    {
+        "name": "COR-STAT1202 Introductory Statistics",
+        "time": "08:15 AM",
+        "location": "SOE/SCIS2 SR 2-5",
+        "recurring": true,
+        "day": [
+            "Wednesday"
+        ],
+        "reminder_sent": false
     }
 ]
