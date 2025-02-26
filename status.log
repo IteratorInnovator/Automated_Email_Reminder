@@ -74,3 +74,4 @@
 2025-02-25 09:47:08,025 -  INFO - Email reminder sent for the following event: COR-STAT1202 Introductory Statistics
 2025-02-25 16:28:54,426 -  INFO - Email reminder sent for the following event: IS113 Web Application Development I
 2025-02-25 19:18:23,556 -  INFO - Email reminder sent for the following event: IS112 Data Management
+2025-02-26 09:46:28,168 -  INFO - Reminder flag has been resetted to false for the following event: COR-STAT1202 Introductory Statistics
