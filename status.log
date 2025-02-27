@@ -77,3 +77,4 @@
 2025-02-26 09:46:28,168 -  INFO - Reminder flag has been resetted to false for the following event: COR-STAT1202 Introductory Statistics
 2025-02-26 16:29:13,100 -  INFO - Reminder flag has been resetted to false for the following event: IS113 Web Application Development I
 2025-02-26 19:18:40,317 -  INFO - Reminder flag has been resetted to false for the following event: IS112 Data Management
+2025-02-27 09:47:08,533 -  INFO - Email reminder sent for the following event: IS115 Algorithms & Programming
