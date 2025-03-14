@@ -37,7 +37,7 @@
         "day": [
             "Friday"
         ],
-        "reminder_sent": true
+        "reminder_sent": false
     },
     {
         "name": "COR-STAT1202 Introductory Statistics",
