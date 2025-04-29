@@ -17,7 +17,7 @@
         "day": [
             "Wednesday"
         ],
-        "reminder_sent": false
+        "reminder_sent": true
     },
     {
         "name": "IS112 Data Management",
